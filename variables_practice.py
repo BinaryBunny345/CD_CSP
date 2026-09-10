@@ -1,0 +1,23 @@
+# CD, Variables Practice
+
+name = input("What is your name: ")
+number = input("Pick a number between 1 and 10: ")
+number2 = input("Pick a number between 100 and 1000: ") 
+breakfast = input("What did you have for breakfast?: ")
+color = input("What is your favorite color?: ")
+school = input("What school do you go to?: ") 
+year = input("What year is is?: ")
+eye = input("What is your eye color?: ")
+age = input("How old are you?: ")
+subject = input("What is your favorite subject in school?: ")
+
+print(name)
+print(number)
+print(number2)
+print(breakfast)
+print(color)
+print(school)
+print(year)
+input(eye)
+input(age)
+input(subject)
