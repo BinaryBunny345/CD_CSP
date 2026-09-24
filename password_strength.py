@@ -33,7 +33,7 @@ for letter in password:
         lowercase = True
     if letter.isnumeric():
         number = True
-    if letter in "!?@#$[]<>:":
+    if letter in "!?@#$&[]<>:":
         symbol = True
 
 if length == True:
