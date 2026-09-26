@@ -67,12 +67,12 @@ if password_strength == "Strong":
 else:
     print("To make it Strong:")
     if length == False:
-        print("    - Make your password at least 8 characters long")
+        print("  - Make your password at least 8 characters long")
     if uppercase == False:
-        print("    - Add an uppercase letter")
+        print("  - Add an uppercase letter")
     if lowercase == False:
-        print("    - Add a lowercase letter")
+        print("  - Add a lowercase letter")
     if number == False:
         print("    - Include a number")
     if symbol == False:
-        print("    - It must contain a symbol")
+        print("  - It must contain a symbol")
