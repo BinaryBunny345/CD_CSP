@@ -9,7 +9,14 @@ print("Hello, welcome to Cora's Guessing Game. You have six tries to guess the c
 guess_number = 1
 
 while guess_number <= 6:
-    guess = int(input(f"What is your guess #{guess_number}? "))
+    
+    while True:
+        try:
+            guess = int(input(f"What is your guess #{guess_number}? "))
+            break
+        except:
+            print("Please enter a number for your guess.")
+
     if guess == random_number:
         print(f"Correct! You got the answer in {guess_number} tries! ")
         break
