@@ -28,4 +28,3 @@ shift = input("How many times would you like to shift: ")
 for letter in message:
     if letter.isalpha():
         letter = ord(letter)
-        
