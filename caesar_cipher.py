@@ -27,6 +27,5 @@ shift = input("How many times would you like to shift: ")
 
 for letter in message:
     if letter.isalpha():
-        print(message)
-    elif letter.isnumeric():
-        print(f"Please print a valid message ")
+        letter = ord(letter)
+        
