@@ -1,5 +1,9 @@
 # CD, Caesar Cipher assignment
 
+# Notes:
+# ord() function returns an integer representing the Unicode code point of a single character
+# chr() function converts an integer into its corresponding Unicode character
+
 #ENCRYPTING
 # FOR LOOP
 # Looking at suggested outputs
@@ -23,8 +27,49 @@
 
 suggested_output = input("Would you like to (E)ncrypt or (D)ecrypt a message? ")
 message = input("What is your message: ")
-shift = input("How many times would you like to shift: ")
+shift = int(input("How many times would you like to shift: "))
 
-for letter in message:
-    if letter.isalpha():
-        letter = ord(letter)
+def caesar_shift(message, shift):
+    min_low = ord("a")
+    max_low = ord("z")
+    min_upp = ord("A")
+    max_upp = ord("Z")
+    new_message = ""
+
+    for letter in message:
+        if letter.isalpha():
+            letterord = ord(letter)
+            if shift < 0:
+                if letter.isupper():
+                    if letterord + shift < min_upp:
+                        letterord += 26
+                elif letter.islower():
+                    if letterord + shift < min_low:
+                        letterord += 26
+
+            if shift > 0:
+                if letter.isupper():
+                    if letterord + shift > max_upp:
+                        letterord -= 26
+                elif letter.islower():
+                    if letterord + shift > max_low:
+                        letterord -= 26
+
+            letterord += shift
+
+            new_message = new_message + chr(letterord)
+        else:
+            new_message = new_message + letter
+
+    return new_message
+
+output_is = ""
+
+if suggested_output == "D":
+    shift *= -1
+    output_is = "decrypted"
+
+if suggested_output == "E":
+    output_is = "encrypted"
+
+print(f"Your {output_is} message is: " + caesar_shift(message, shift))
