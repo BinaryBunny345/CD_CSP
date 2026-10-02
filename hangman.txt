@@ -1,0 +1,1 @@
+Thelist = ["apple", "banana", "america", "sun", "eardrum", "moose", "tree", "glasses", "kitten", "water"]
