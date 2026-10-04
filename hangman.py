@@ -5,7 +5,7 @@
 # Create another file holding win/loss counts
 # Read files
 # Use split (",") on the content of the words txt document to create your list of words
-# Pull win and lose totals from the other txt file and save them as 2 seperate vaiables
+# Pull win and lose totals from the other txt file and save them as 2 seperate variables
 # Build the hangman game
     # Show user hang
     # Under neeth do blanks for the number of letter that you have in the word
@@ -13,7 +13,7 @@
     # Save the correct word as a variable random.choice(name or the list)
     # Number of wrong guesses (0)
     # What letters have been guessed []
-# Function to display the hangman (Needs number of wrong guesses
+# Function to display the hangman (Needs number of wrong guesses)
 
 '''
 _______
@@ -34,7 +34,7 @@ _______
         # Add an underscore to the display word
 # Return the finished display word (outside of the loop)
 
-# Main game of the game (while True)
+# Main loop of the game (while True)
     # Call function to show hangman
     # Print function call to show display word
     # Create variable and ask user to guess a letter
@@ -52,10 +52,4 @@ _______
         # Increase the lost count
         # Ask if they want to play
 
-import random
-
 with open("hangman.txt", "r") as file:
-    content = file.read()
-    x = content.split(",")
-
-    print(content)
