@@ -52,7 +52,21 @@ _______
         # Increase the lost count
         # Ask if they want to play
 
+any = 0
+
 import random 
+
+word_contents = ""
+
+with open("hangman.txt", "r") as file:
+    word_contents = file.read()
+    
+word_list = word_contents.split("\n")
+
+random_word_index = random.randint(0, len(word_list) - 1)
+word_to_guess = word_list[random_word_index]
+
+print(word_to_guess)
 
 def display_hanging_victim (wrong_guesses):
 
@@ -85,15 +99,5 @@ def display_hanging_victim (wrong_guesses):
     print("")
     print("|________")
 
-
-word_contents = ""
-
-with open("hangman.txt", "r") as file:
-    word_contents = file.read()
-    
-word_list = word_contents.split("\n")
-
-random_word_index = random.randint(0, len(word_list) - 1)
-word_to_guess = word_list[random_word_index]
-
-# print(word_to_guess)
+if any <= 6:
+    any + 1
