@@ -19,8 +19,8 @@
 _______
 |     |
 |     O
-|    /|\\
-|    / \\
+|    /|\
+|    / \
 |_________
 
 '''
@@ -52,4 +52,48 @@ _______
         # Increase the lost count
         # Ask if they want to play
 
+import random 
+
+def display_hanging_victim (wrong_guesses):
+
+    print("_______")
+    print("|     |")
+
+    if wrong_guesses > 0:
+        print("|     0")
+    else:
+        print("|")
+    
+    print("|    ", end = '')
+
+    if wrong_guesses > 1:
+        print("/", end = '')
+    if wrong_guesses > 2:
+        print("|", end = '')
+    if wrong_guesses > 3:
+        print("\\", end = '')
+
+    print("")
+
+    print("|    ", end = '')
+    
+    if wrong_guesses > 4:
+        print("/ ", end = '')
+    if wrong_guesses > 5:
+        print("\\", end = '')
+    
+    print("")
+    print("|________")
+
+
+word_contents = ""
+
 with open("hangman.txt", "r") as file:
+    word_contents = file.read()
+    
+word_list = word_contents.split("\n")
+
+random_word_index = random.randint(0, len(word_list) - 1)
+word_to_guess = word_list[random_word_index]
+
+# print(word_to_guess)
