@@ -52,21 +52,8 @@ _______
         # Increase the lost count
         # Ask if they want to play
 
-any = 0
-
 import random 
-
-word_contents = ""
-
-with open("hangman.txt", "r") as file:
-    word_contents = file.read()
-    
-word_list = word_contents.split("\n")
-
-random_word_index = random.randint(0, len(word_list) - 1)
-word_to_guess = word_list[random_word_index]
-
-print(word_to_guess)
+import os.path
 
 def display_hanging_victim (wrong_guesses):
 
@@ -80,10 +67,10 @@ def display_hanging_victim (wrong_guesses):
     
     print("|    ", end = '')
 
-    if wrong_guesses > 1:
-        print("/", end = '')
-    if wrong_guesses > 2:
-        print("|", end = '')
+    if wrong_guesses == 2:
+        print(" |", end = '')
+    elif wrong_guesses > 2:
+        print("/|", end = '')
     if wrong_guesses > 3:
         print("\\", end = '')
 
@@ -98,6 +85,109 @@ def display_hanging_victim (wrong_guesses):
     
     print("")
     print("|________")
+# End of display_hanging_victim function
 
-if any <= 6:
-    any + 1
+def record_record (wins, losses):
+    with open("stats.txt", "w") as file:
+        file.write(str(wins) + "," + str(losses))
+# end of record_record function
+
+def display_word_guess (right_answers):
+    for character in right_answers:
+        print(character, end = ' ')
+    print("")
+# END OF FUNCTION
+
+# ----------------------------------------- load words and choose random word
+word_contents = ""
+
+with open("hangman.txt", "r") as file:
+    word_contents = file.read()
+    
+word_list = word_contents.split("\n")
+
+random_word_index = random.randint(0, len(word_list) - 1)
+word_to_guess = word_list[random_word_index].upper()
+
+# print(word_to_guess)
+
+# ----------------------------------------- load stats
+stats_filename = "stats.txt"
+
+if not os.path.exists(stats_filename):
+    record_record(0,0)
+
+hangman_record = ""
+
+with open(stats_filename, "r") as file:
+    hangman_record = file.read()
+    
+hangman_scores = hangman_record.split(",")
+
+wins = int(hangman_scores[0])
+losses = int(hangman_scores[1])
+
+# print(f"wins: {wins}, losses: {losses}")
+
+# ----------------------------------------- starting the game
+number_of_guesses = 0
+wrong_guesses = 0
+winning = False
+
+guesses = []
+solved = []
+word = []
+
+for letter in word_to_guess:
+    solved.append("_")
+    word.append(letter)
+
+# print(solved)
+# print(word)
+
+print(f"Your record is {wins} wins and {losses} losses.")
+while True:
+    display_hanging_victim(wrong_guesses)
+    display_word_guess(solved)
+
+    print("Guessed letters: " + ", ".join(guesses))
+    print(f"Wrong guesses remaining: {6 - wrong_guesses}")
+
+    while True:
+        guess = input("Guess a letter: ").upper()
+        if guess not in guesses:
+            guesses.append(guess)
+            break
+        else:
+            print(f"Sorry, you already guessed '{guess}'. Try again.")
+
+    good_guess = False
+    index = 0
+    for letter in word:
+        if guess == letter:
+            solved[index] = letter
+            good_guess = True
+        index += 1
+
+    if good_guess != True:
+        wrong_guesses += 1
+        print(f"Sorry, '{guess}' is not in the word.")
+
+    if solved == word:
+        winning = True
+        wins += 1
+        break 
+
+    if wrong_guesses > 5:
+        losses += 1
+        display_hanging_victim(wrong_guesses)
+        break
+
+if winning:
+    print(f"\nYou won! You guessed the word: '{word_to_guess}'")
+else:
+    print(f"\nYou lost, the word was '{word_to_guess}'")
+
+record_record(wins, losses)
+
+print(f"New record update: wins: {wins}, losses: {losses}")
