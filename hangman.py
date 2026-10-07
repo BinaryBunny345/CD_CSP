@@ -101,7 +101,7 @@ def display_word_guess (right_answers):
 # ----------------------------------------- load words and choose random word
 word_contents = ""
 
-with open("hangman.txt", "r") as file:
+with open("words.txt", "r") as file:
     word_contents = file.read()
     
 word_list = word_contents.split("\n")
