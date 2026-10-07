@@ -148,13 +148,17 @@ for letter in word_to_guess:
 print(f"Your record is {wins} wins and {losses} losses.")
 while True:
     display_hanging_victim(wrong_guesses)
+    print("")
     display_word_guess(solved)
+    print("")
 
     print("Guessed letters: " + ", ".join(guesses))
     print(f"Wrong guesses remaining: {6 - wrong_guesses}")
 
     while True:
         guess = input("Guess a letter: ").upper()
+        print("")
+        print("")
         if guess not in guesses:
             guesses.append(guess)
             break
