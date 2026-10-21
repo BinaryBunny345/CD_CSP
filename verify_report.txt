@@ -1,0 +1,103 @@
+# CD, Verify Report
+
+I plan to choose a matinee and an age hoping the original code will produce all of the correct answers. If it doesn't, I will fix everything that is wrong and make it correct in a new python file with the correct code.
+
+During all ten of my original tests I chose a matinee and age, after it gave me an answer I would compare it to the correct answer and if the code's answer was wrong I would mark it wrong in a table (first table below). If something was correct, I would leave it alone. After the original ten tests were done, I debugged everything.
+
+I re-wrote the code in a separate file along with testing this new code ten times using the same answers as the original ten tests. 
+Below is my first test tests, results, and what was wrong with them:
+
+Part One, First Test:
+TEST #
+TEST INPUT:
+EXPECTED:
+ACTUAL:
+PASS/FAIL:
+1
+Age: 4
+Matinee: Yes
+$0
+$-3
+Fail
+2
+Age: 0
+Matinee: No
+$0
+$0
+Pass
+3
+Age: 5
+Matinee: No
+$8
+$8
+Pass
+4
+Age: 12
+Matinee: Yes
+$5
+$9
+Fail
+5
+Age: 13
+Matinee: No
+$12
+$12
+Pass
+6
+Age: 64
+Matinee: No
+$12
+$12
+Pass
+7
+Age: 65
+Matinee: Yes
+$6
+$6
+Pass
+8
+Age: 90
+Matinee: No
+$9
+$9
+Pass
+9
+Age: 13 ½
+“Invalide age”
+Code Crashed
+Fail
+10
+Age: Hello
+“That is not a valid age, please try again: “
+Code Crashed
+Fail
+
+Part Two, Bug Report:
+Problem
+What The Spec Said Should Happen
+What Actually Happened
+The Type of Error
+TEST 1:
+Left us with $-3 instead of $0
+The price can never go into the negatives, it was supposed to stay at $0. Didn’t print with two decimal places. 
+The matinee was “Yes” and the age was 4. The code took away $3 when it shouldn’t have.
+Logic error
+TEST 4:
+Left us with $9
+instead of $5
+The spec says it should print $5 dollars because of the matinee.
+The code left us with $9 instead 
+Logic error
+TEST 9:
+Left us with a broken code instead of stating “Invalid age”.
+“Invalid age” and then stopped without asking anymore questions.
+The code crashed when an age and a half was typed in, instead of a whole number. 
+Run-time Error
+TEST 10:
+Left us with a code crash instead of correcting the user.
+Supposed to say "Invalid Age”, say nothing else, and have them input another age. 
+The code crashed when a word was typed in, instead of a number.
+Run-time error
+
+Explanation: 
+This new and improved code will ask a user for their age, if the user puts a fraction of an age or a word/letter, the code will not allow the user to continue moving on. If the user makes it past the first question (their age), it will ask if they have a matinee, it will remove three dollars from the current price they would originally pay based on their age if they do have a matinee, but if they don’t, the price will stay the same. After the user has answered both questions the code will print the final cost of your ticket. The code will make sure that you input all correct values and answers, ensuring nothing that is wrong can be used as an age or matinee answer. 
